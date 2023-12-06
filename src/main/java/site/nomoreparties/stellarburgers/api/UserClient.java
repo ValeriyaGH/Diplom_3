@@ -14,7 +14,7 @@ public class UserClient {
     public static final String PATH_CREATING_USER = "/api/auth/register";
 
     @Step("Авторизация созданным пользователем через апи")
-    public ValidatableResponse authUser(NewUser newUser){
+    public ValidatableResponse authUser(NewUser newUser) {
         createdUser = new CreatedUser(newUser.getEmail(), newUser.getPassword());
         return given()
                 .spec(Confiq.getSpec())
@@ -23,8 +23,9 @@ public class UserClient {
                 .post(PATH_AUTH_USER)
                 .then();
     }
+
     @Step("Удаление пользователя через апи")
-    public ValidatableResponse deleteUser(String accessToken){
+    public ValidatableResponse deleteUser(String accessToken) {
         return given()
                 .spec(Confiq.getSpec())
                 .headers("Authorization", accessToken)
@@ -32,8 +33,9 @@ public class UserClient {
                 .delete(PATH_GET_USER_INFO)
                 .then();
     }
+
     @Step("Создание пользователя через апи")
-    public ValidatableResponse creatingUser(NewUser newUser){
+    public ValidatableResponse creatingUser(NewUser newUser) {
         return given()
                 .spec(Confiq.getSpec())
                 .body(newUser)

@@ -1,6 +1,9 @@
 package site.nomoreparties.stellarburgers.pageobject;
+
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class PersonalPage {
     private final WebDriver webDriver;
     private By userMenu = By.className("Account_nav__Lgali");
@@ -13,19 +16,28 @@ public class PersonalPage {
         this.webDriver = webDriver;
     }
 
-    public boolean checkPersonalMenuIsDisplayed(){
+    @Step("Проверка отображения меню пользователя внутри личного кабинета")
+    public boolean checkPersonalMenuIsDisplayed() {
         return webDriver.findElement(userMenu).isDisplayed();
     }
-    public void clickExitButton(){
+
+    @Step("Клик по кнопке 'Выход'")
+    public void clickExitButton() {
         webDriver.findElement(exitButton).click();
     }
-    public void open(){
+
+    @Step("Открытие страницы личного кабинета")
+    public void open() {
         webDriver.get("https://stellarburgers.nomoreparties.site/login");
     }
-    public void clickConstructorButton(){
+
+    @Step("Клик по кнопке 'Конструктор' ввеху страницы")
+    public void clickConstructorButton() {
         webDriver.findElement(constructor).click();
     }
-    public void clickToLogo(){
+
+    @Step("Клик по логотипу вверху страницы")
+    public void clickToLogo() {
         webDriver.findElement(logo).click();
     }
 

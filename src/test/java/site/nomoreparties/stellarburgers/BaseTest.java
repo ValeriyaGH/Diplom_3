@@ -16,8 +16,9 @@ public class BaseTest {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 webDriver = new ChromeDriver();
-//            case "yandex":
-//                webDriver = yandexDriver();
+                break;
+           case "yandex":
+                webDriver = yandexDriver();
                 break;
             default: throw new RuntimeException("Необходимо выбрать браузер - Хром или Яндекс");
         }

@@ -10,8 +10,10 @@ public class NewUser {
         this.password = password;
         this.name = name;
     }
-    public NewUser(){
+
+    public NewUser() {
     }
+
     public String getEmail() {
         return email;
     }

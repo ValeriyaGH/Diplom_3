@@ -1,5 +1,7 @@
 package site.nomoreparties.stellarburgers.pageobject;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import site.nomoreparties.stellarburgers.model.CreatedUser;
@@ -16,25 +18,35 @@ public class AuthPage {
     private By passwordRecoveryButton = By.xpath(".//a[text()='Восстановить пароль']");
     private By authFromRecoveryPassword = By.xpath(".//a[text()='Войти']");
 
-    public AuthPage(WebDriver webDriver){
+    public AuthPage(WebDriver webDriver) {
         this.driver = webDriver;
     }
-    public void clickRegistrationButton(){
+
+    @Step("Клик по кнопке 'Регистрация'")
+    public void clickRegistrationButton() {
         driver.findElement(registrationButton).click();
     }
-    public void authUser(String email, String password){
+
+    @Step("Авторзация пользователя")
+    @Description("Вводим логин и пароль, нажимаем на кнопку 'Авторизация'")
+    public void authUser(String email, String password) {
         driver.findElement(authEmail).sendKeys(email);
         driver.findElement(authPassword).sendKeys(password);
         driver.findElement(authButton).click();
     }
-    public void clickPasswordRecoveryButton(){
+
+    @Step("Клик по кнопке восстановления пароля")
+    public void clickPasswordRecoveryButton() {
         driver.findElement(passwordRecoveryButton).click();
     }
-    public void clickAuthButtonFromRecoveryPassword(){
+
+    @Step("Клик по кнопке 'Авторизация' на странице восстановления пароля")
+    public void clickAuthButtonFromRecoveryPassword() {
         driver.findElement(authFromRecoveryPassword).click();
     }
 
-    public boolean checkLoginButtonIsVisible(){
+    @Step("Проверка видимости кнопки авторизации")
+    public boolean checkLoginButtonIsVisible() {
         return driver.findElement(authButton).isDisplayed();
     }
 

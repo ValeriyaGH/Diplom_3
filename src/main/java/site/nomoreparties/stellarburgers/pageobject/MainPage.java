@@ -1,4 +1,6 @@
 package site.nomoreparties.stellarburgers.pageobject;
+
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -10,56 +12,78 @@ public class MainPage {
     private By authButton = By.className("button_button__33qZ0");
     private By personalInfo = By.xpath("//p[contains(text(),'Личный Кабинет')]");
     private By exitButton = By.xpath("//button[contains(text(),'Выход')]");
-    //Кнопка "войти в аккаунт" на главной
     private By loginButton = By.xpath("//button[contains(text(),'Войти в аккаунт')]");
     private By sauses = By.xpath("//span[text()='Соусы']/..");
     private By filling = By.xpath("//span[text()='Начинки']/..");
     private By buns = By.xpath(".//span[text()='Булки']/..");
 
 
-
-    public MainPage(WebDriver webdriver){
+    public MainPage(WebDriver webdriver) {
         this.webDriver = webdriver;
     }
-    public void open(){
+
+    @Step("Открываем страницу тестируемого сервиса")
+    public void open() {
         webDriver.get("https://stellarburgers.nomoreparties.site/");
     }
-    public void clickAuthButton(){
+
+    @Step("Клик по кнопке 'Авторизация'")
+    public void clickAuthButton() {
         webDriver.findElement(authButton).click();
     }
-    public void clickPersonalInfoButton(){
+
+    @Step("Клик по кнопке 'Личный кабинет'")
+    public void clickPersonalInfoButton() {
         webDriver.findElement(personalInfo).click();
     }
-    public void clickExitButton(){
+
+    @Step("Клик по кнопке 'Выход'")
+    public void clickExitButton() {
         webDriver.findElement(exitButton).click();
     }
-    public void clickLoginButton(){
+
+    @Step("Клик по кнопке 'Войти в аккаунт' на главной")
+    public void clickLoginButton() {
         webDriver.findElement(loginButton).click();
     }
-    public void switchToSauses(){
+
+    @Step("Открыть соусы")
+    public void switchToSauses() {
         webDriver.findElement(sauses).click();
     }
-    public void switchToFilling(){
+
+    @Step("Открыть начинки")
+    public void switchToFilling() {
         webDriver.findElement(filling).click();
     }
-    public void switchToBuns(){
+
+    @Step("Открыть булки")
+    public void switchToBuns() {
         webDriver.findElement(buns).click();
     }
-    public boolean checkConstructorMenuIsVisible(){
+
+    @Step("Проверить видимость меню конструктора")
+    public boolean checkConstructorMenuIsVisible() {
         return webDriver.findElement(buns).isDisplayed();
     }
-    public boolean checkBunsIsVisible(){
+
+    @Step("Проверить что булки отображаются на странице")
+    public boolean checkBunsIsVisible() {
         return new WebDriverWait(webDriver, 7).until(ExpectedConditions.attributeContains(buns, "class", "current"));
     }
-    public boolean checkSausesIsVisible(){
+
+    @Step("Проверить что соусы отображаются на странице")
+    public boolean checkSausesIsVisible() {
         return new WebDriverWait(webDriver, 7).until(ExpectedConditions.attributeContains(sauses, "class", "current"));
     }
-    public boolean checkFillingsIsVisible(){
+
+    @Step("Проверить что начинки отображаются на странице")
+    public boolean checkFillingsIsVisible() {
         return new WebDriverWait(webDriver, 7).until(ExpectedConditions.attributeContains(filling, "class", "current"));
     }
 
     // Вынужденно добавила этот метод,тк авторизация падает с любыми другими ожиданиями
-    public void waiting(){
+    public void waiting() {
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {

@@ -1,5 +1,4 @@
 package site.nomoreparties.stellarburgers.helper;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import site.nomoreparties.stellarburgers.model.NewUser;
 

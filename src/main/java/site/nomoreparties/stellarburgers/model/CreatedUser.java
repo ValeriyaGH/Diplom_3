@@ -25,7 +25,8 @@ public class CreatedUser {
         this.email = email;
         this.password = password;
     }
-    public CreatedUser(){
+
+    public CreatedUser() {
 
     }
 }
